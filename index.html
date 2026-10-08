@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b1020" />
+    <title>테트리스 — 블록을 쌓아보세요</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <div class="brand-mark" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div>
+            <p class="eyebrow">BLOCK BY BLOCK</p>
+            <h1>테트리스</h1>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <span class="status-pill" id="statusPill"><span class="status-dot"></span><span id="statusText">준비</span></span>
+          <button class="icon-button" id="headerPauseButton" type="button" aria-label="게임 일시정지" title="일시정지 (P)">Ⅱ</button>
+        </div>
+      </header>
+
+      <section class="game-layout" aria-label="테트리스 게임">
+        <div class="board-column">
+          <div class="game-board-wrap">
+            <div class="board-frame">
+              <div class="game-board" id="gameBoard" role="grid" aria-label="테트리스 게임판"></div>
+              <div class="board-overlay" id="boardOverlay" aria-live="polite">
+                <div class="overlay-card" id="overlayCard">
+                  <div class="overlay-icon" id="overlayIcon">✦</div>
+                  <p class="eyebrow" id="overlayEyebrow">READY WHEN YOU ARE</p>
+                  <h2 id="overlayTitle">블록을 쌓아보세요</h2>
+                  <p class="overlay-description" id="overlayDescription">가로줄을 완성하면 줄이 사라집니다.<br />빈틈 없이, 오래 살아남아 보세요.</p>
+                  <div class="overlay-score" id="overlayScore" hidden></div>
+                  <button class="primary-button" id="overlayPrimaryButton" type="button">게임 시작</button>
+                  <button class="text-button" id="overlaySecondaryButton" type="button" hidden>새 게임</button>
+                </div>
+              </div>
+            </div>
+            <div class="board-caption">
+              <span><i class="legend-dot legend-dot--ghost"></i>착지 위치</span>
+              <span class="caption-hint">줄을 완성해 점수를 올리세요</span>
+            </div>
+          </div>
+
+          <div class="mobile-controls" aria-label="터치 조작">
+            <button class="control-button control-button--rotate" data-action="rotate" type="button" aria-label="회전">↻</button>
+            <button class="control-button" data-action="left" type="button" aria-label="왼쪽 이동">←</button>
+            <button class="control-button control-button--drop" data-action="drop" type="button" aria-label="즉시 내리기">⇣</button>
+            <button class="control-button" data-action="right" type="button" aria-label="오른쪽 이동">→</button>
+            <button class="control-button" data-action="down" type="button" aria-label="빠르게 내리기">↓</button>
+          </div>
+        </div>
+
+        <aside class="sidebar">
+          <section class="next-card panel-card">
+            <div class="section-heading">
+              <span class="section-label">NEXT</span>
+              <span class="section-line"></span>
+            </div>
+            <div class="next-preview" id="nextPreview" aria-label="다음 블록 미리보기"></div>
+            <p class="preview-caption">다음 블록</p>
+          </section>
+
+          <section class="stats-card panel-card">
+            <div class="stat-main">
+              <span class="stat-label">SCORE</span>
+              <strong id="scoreValue">0</strong>
+            </div>
+            <div class="stat-grid">
+              <div class="mini-stat">
+                <span class="stat-label">BEST</span>
+                <strong id="bestValue">0</strong>
+              </div>
+              <div class="mini-stat">
+                <span class="stat-label">LEVEL</span>
+                <strong id="levelValue">1</strong>
+              </div>
+              <div class="mini-stat mini-stat--wide">
+                <span class="stat-label">LINES CLEARED</span>
+                <strong id="linesValue">0</strong>
+              </div>
+            </div>
+          </section>
+
+          <div class="sidebar-actions">
+            <button class="secondary-button" id="pauseButton" type="button"><span>Ⅱ</span> 일시정지</button>
+            <button class="secondary-button secondary-button--quiet" id="restartButton" type="button"><span>↻</span> 다시 시작</button>
+          </div>
+
+          <section class="controls-card panel-card">
+            <div class="section-heading">
+              <span class="section-label">HOW TO PLAY</span>
+              <span class="section-line"></span>
+            </div>
+            <div class="key-list">
+              <div class="key-row"><span class="key-group"><kbd>←</kbd><kbd>→</kbd></span><span>이동</span></div>
+              <div class="key-row"><span class="key-group"><kbd>↑</kbd></span><span>회전</span></div>
+              <div class="key-row"><span class="key-group"><kbd>↓</kbd></span><span>빠르게 내리기</span></div>
+              <div class="key-row"><span class="key-group"><kbd>SPACE</kbd></span><span>즉시 내리기</span></div>
+              <div class="key-row"><span class="key-group"><kbd>P</kbd></span><span>일시정지</span></div>
+            </div>
+          </section>
+
+          <div class="tip-card">
+            <span class="tip-icon">✦</span>
+            <p><strong>TIP</strong><br />한 번에 4줄을 지우면<br /><em>800점</em>을 얻어요.</p>
+          </div>
+        </aside>
+      </section>
+
+      <footer class="footer-note"><span class="footer-blocks" aria-hidden="true">▦</span> 빈틈 없이 쌓고, 나만의 최고 기록을 만들어보세요.</footer>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
